@@ -18,6 +18,8 @@ def getAll(request):
 def insertRow(request):
     if request.method == 'POST':
         row = json.loads(request.body)
+        if request.body != None:
+            return JsonResponse({"status": "INVALID INPUT"})
         origin = models.Table1.objects.filter(id=1).values()[0]
         origin['data1'] = row['data1']
         table = Table1(id=1, data1=row['data1'], data2=origin['data2'], data3=origin['data3'], data4=origin['data4'])
