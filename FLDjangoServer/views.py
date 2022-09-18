@@ -18,7 +18,7 @@ def getAll(request):
 def insertRow(request):
     if request.method == 'POST':
         row = json.loads(request.body)
-        if request.body == None:
+        if request.body is None:
             return JsonResponse({"status": "INVALID INPUT"})
         origin = models.Table1.objects.filter(id=1).values()[0]
         origin['data2'] = row['data2']
