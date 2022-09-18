@@ -10,18 +10,18 @@ from FLDjangoServer.models import Table1
 # Create your views here.
 def getAll(request):
     output = []
-    out = models.Table1.objects.values()
-    for o in out:
-        output.append(o)
-    return JsonResponse({'table1': output})
+    out = models.Table1.objects.filter(id=1).values()
+    return JsonResponse({"data1": out[0]['data1']})
 
 
 @csrf_exempt
 def insertRow(request):
     if request.method == 'POST':
         row = json.loads(request.body)
-        table = Table1(data1=row['data1'],data2=row['data2'],data3=row['data3'],data4=row['data4'])
+        origin = models.Table1.objects.filter(id=1).values()[0]
+        origin['data1'] = row['data1']
+        table = Table1(id=1, data1=row['data1'], data2=origin['data2'], data3=origin['data3'], data4=origin['data4'])
         table.save()
-        return HttpResponse("OK")
+        return JsonResponse({"status": "OK"})
     else:
-        return HttpResponse("404")
+        return JsonResponse({"status": "NOT POST"})
