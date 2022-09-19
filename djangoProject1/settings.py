@@ -77,16 +77,7 @@ WSGI_APPLICATION = 'djangoProject1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'greendb',
-        'USER': 'test',
-        'PASSWORD': 'Parol123-',
-        'HOST': '89.22.239.32',
-        'PORT': '3306',
-    }
-}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
